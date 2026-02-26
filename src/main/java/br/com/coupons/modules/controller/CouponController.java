@@ -2,10 +2,12 @@ package br.com.coupons.modules.controller;
 
 import br.com.coupons.modules.dto.CouponRequest;
 import br.com.coupons.modules.dto.CouponResponse;
+import br.com.coupons.modules.dto.CouponResponseError;
 import br.com.coupons.modules.model.Coupon;
 import br.com.coupons.modules.service.CouponService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.ErrorResponse;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -18,7 +20,7 @@ public class CouponController {
     }
 
     @PostMapping
-    public ResponseEntity<CouponResponse> create(
+    public ResponseEntity create(
             @Valid @RequestBody CouponRequest request) {
         try {
             Coupon coupon = couponService.create(
@@ -34,7 +36,7 @@ public class CouponController {
         }catch(IllegalArgumentException e){
             System.out.println(e.getMessage());
             return ResponseEntity
-                    .badRequest().build();
+                    .badRequest().body(new CouponResponseError(e.getMessage()));
         }
     }
 
@@ -44,19 +46,20 @@ public class CouponController {
             couponService.delete(id);
             return ResponseEntity.ok().build();
         }catch(IllegalArgumentException e){
-            return ResponseEntity.badRequest().build();
-        }
+            return ResponseEntity
+                    .badRequest().body(new CouponResponseError(e.getMessage()));        }
 
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<CouponResponse> findById(@PathVariable Long id) {
+    public ResponseEntity findById(@PathVariable Long id) {
 
         try{
             Coupon coupon = couponService.findById(id);
             return ResponseEntity.ok(new CouponResponse(coupon));
         }catch(IllegalArgumentException e){
-            return ResponseEntity.notFound().build();
+            return ResponseEntity
+                    .badRequest().body(new CouponResponseError(e.getMessage()));
         }
 
 
