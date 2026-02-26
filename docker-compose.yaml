@@ -1,0 +1,7 @@
+services:
+  coupons-app:
+    build: .
+    container_name: coupons-app
+    ports:
+      - "8080:8080"
+    restart: always
