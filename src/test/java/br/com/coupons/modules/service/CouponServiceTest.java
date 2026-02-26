@@ -44,7 +44,7 @@ public class CouponServiceTest {
                 "ABC123",
                 "Black Friday",
                 new BigDecimal("10.0"),
-                LocalDateTime.now(),
+                LocalDateTime.now().plusDays(1),
                 true
         );
 
@@ -59,11 +59,11 @@ public class CouponServiceTest {
                 "ABC123",
                 "Test",
                 new BigDecimal("10.0"),
-                LocalDateTime.now(),
+                LocalDateTime.now().plusDays(1),
                 false
         );
 
-        when(couponRepository.findById(1L))
+        when(couponRepository.findByIdAndDeletedFalse(1L))
                 .thenReturn(Optional.of(coupon));
 
         couponService.delete(1L);

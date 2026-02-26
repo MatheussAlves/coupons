@@ -15,7 +15,7 @@ public class CouponTest {
                 "ABC123",
                 "Black Friday",
                 new BigDecimal("10.0"),
-                LocalDateTime.now(),
+                LocalDateTime.now().plusDays(1),
                 true
         );
         assertEquals("ABC123", coupon.getCode());
@@ -28,7 +28,7 @@ public class CouponTest {
                 "AB-C@12#3",
                 "Teste",
                 new BigDecimal("10.0"),
-                LocalDateTime.now(),
+                LocalDateTime.now().plusDays(1),
                 false
         );
 
@@ -42,7 +42,7 @@ public class CouponTest {
                         "ABC12",
                         "Teste",
                         new BigDecimal("10.0"),
-                        LocalDateTime.now(),
+                        LocalDateTime.now().plusDays(1),
                         false
                 )
         );
@@ -55,7 +55,7 @@ public class CouponTest {
                         "ABC123",
                         "Teste",
                         new BigDecimal("0.4"),
-                        LocalDateTime.now(),
+                        LocalDateTime.now().plusDays(1),
                         false
                 )
         );
@@ -80,7 +80,7 @@ public class CouponTest {
                 "ABC123",
                 "Teste",
                 new BigDecimal("10.0"),
-                LocalDateTime.now(),
+                LocalDateTime.now().plusDays(1),
                 false
         );
 
@@ -95,7 +95,7 @@ public class CouponTest {
                 "ABC123",
                 "Test",
                 new BigDecimal("10.0"),
-                LocalDateTime.now(),
+                LocalDateTime.now().plusDays(1),
                 false
         );
 
