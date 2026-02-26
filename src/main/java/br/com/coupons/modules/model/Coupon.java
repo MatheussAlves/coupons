@@ -2,6 +2,7 @@ package br.com.coupons.modules.model;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -10,6 +11,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "coupon")
+@NoArgsConstructor
 public class Coupon {
 
     private static final int CODE_LENGTH = 6;
@@ -44,9 +46,11 @@ public class Coupon {
     @Getter
     private boolean deleted = false;
 
-    protected Coupon() {
-        // JPA
-    }
+    @Column(nullable = false)
+    @Getter
+    private boolean redeemed;
+
+
 
     public Coupon(String code,
                   String description,
@@ -59,6 +63,7 @@ public class Coupon {
         this.discountValue = validateDiscount(discountValue);
         this.expirationDate = validateExpirationDate(expirationDate);
         this.published = published;
+        this.redeemed = false;
     }
 
 

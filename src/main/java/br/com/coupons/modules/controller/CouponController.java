@@ -8,6 +8,8 @@ import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+@RestController
+@RequestMapping("/coupons")
 public class CouponController {
     private final CouponService couponService;
 
@@ -30,6 +32,7 @@ public class CouponController {
             return ResponseEntity
                     .ok(new CouponResponse(coupon));
         }catch(IllegalArgumentException e){
+            System.out.println(e.getMessage());
             return ResponseEntity
                     .badRequest().build();
         }

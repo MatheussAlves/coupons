@@ -21,6 +21,8 @@ public class CouponResponse {
     private LocalDateTime expirationDate;
     @Getter
     private boolean published;
+    @Getter
+    private boolean redeemed;
 
     public CouponResponse(Coupon coupon) {
         this.id = coupon.getId();
@@ -29,5 +31,6 @@ public class CouponResponse {
         this.discountValue = coupon.getDiscountValue();
         this.expirationDate = coupon.getExpirationDate();
         this.published = coupon.isPublished();
+        this.redeemed = coupon.isRedeemed();
     }
 }
