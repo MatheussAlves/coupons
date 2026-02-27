@@ -114,7 +114,7 @@ public class CouponServiceTest {
         when(couponRepository.findById(1L))
                 .thenReturn(Optional.of(coupon));
 
-        assertThrows(IllegalStateException.class, () ->
+        assertThrows(IllegalArgumentException.class, () ->
                 couponService.delete(1L)
         );
     }

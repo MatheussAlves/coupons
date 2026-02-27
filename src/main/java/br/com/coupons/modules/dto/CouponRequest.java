@@ -2,11 +2,13 @@ package br.com.coupons.modules.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+@AllArgsConstructor
 public class CouponRequest {
     @NotBlank
     @Getter
