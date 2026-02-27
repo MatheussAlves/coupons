@@ -5,7 +5,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
@@ -22,7 +21,7 @@ public class Coupon {
     @Getter
     private Long id;
 
-    @Column(nullable = false, unique = true, length = 6)
+    @Column(nullable = false, length = 6)
     @Getter
     private String code;
 

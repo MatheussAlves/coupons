@@ -44,7 +44,7 @@ public class CouponController {
     public ResponseEntity delete(@PathVariable Long id) {
         try {
             couponService.delete(id);
-            return ResponseEntity.ok().build();
+            return ResponseEntity.ok().body("Removido com sucesso! ");
         }catch(IllegalArgumentException e){
             return ResponseEntity
                     .badRequest().body(new CouponResponseError(e.getMessage()));        }
